@@ -1,4 +1,5 @@
-﻿using BenchmarkDotNet.Running;
+﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Running;
 using QuickGraph;
 using QuickGraph.Algorithms.Search;
 using System;
@@ -19,47 +20,74 @@ namespace Acomp5
 
         public class Tests
         {
+            [Benchmark]
+            public void Test1()
+            {
+                Program.Test1();
+            }
+
+            [Benchmark]
+            public void Test2()
+            {
+                Program.Test2();
+            }
+
+            [Benchmark]
+            public void Test3()
+            {
+                Program.Test3();
+            }
         }
 
         [Fact]
         public static void Test1()
         {
             Graph.Clear();
-            for(int i = 0; i < Array1.Length; i++)
+            for(int i = 0; i < Array1.Length/2; i++)
             {
                 Graph.AddVerticesAndEdge(new Edge<int>(Array1[i,0], Array1[i, 1]));
-
             }
             DepthFirstSearchAlgorithm<int, Edge<int>> dfs = new DepthFirstSearchAlgorithm<int, Edge<int>>(Graph);
+            int count = 0;
+            dfs.StartVertex += new VertexAction<int>(edge => {
+                ++count;
+            });
             dfs.Compute();
-            Assert.True(false);
+            Assert.True(count == 1);
         }
 
         [Fact]
         public static void Test2()
         {
             Graph.Clear();
-            for (int i = 0; i < Array2.Length; i++)
+            for (int i = 0; i < Array2.Length/2; i++)
             {
                 Graph.AddVerticesAndEdge(new Edge<int>(Array2[i, 0], Array2[i, 1]));
-
             }
             DepthFirstSearchAlgorithm<int, Edge<int>> dfs = new DepthFirstSearchAlgorithm<int, Edge<int>>(Graph);
+            int count = 0;
+            dfs.StartVertex += new VertexAction<int>(edge => {
+                ++count;
+            });
             dfs.Compute();
-            Assert.True(false);
+            Assert.False(count == 1);
         }
 
         [Fact]
         public static void Test3()
         {
             Graph.Clear();
-            for (int i = 0; i < Array3.Length; i++)
+            for (int i = 0; i < Array3.Length/2; i++)
             {
                 Graph.AddVerticesAndEdge(new Edge<int>(Array3[i, 0], Array3[i, 1]));
             }
             DepthFirstSearchAlgorithm<int, Edge<int>> dfs = new DepthFirstSearchAlgorithm<int, Edge<int>>(Graph);
+            int count = 0;
+            dfs.StartVertex += new VertexAction<int>(edge => {
+                ++count;
+            });
             dfs.Compute();
-            Assert.True(false);
+            Assert.False(count==1);
         }
 
         static void Main(string[] args)
