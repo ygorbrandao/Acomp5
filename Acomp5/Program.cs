@@ -55,7 +55,7 @@ namespace Acomp5
             {
                 Graph.AddVerticesAndEdge(new TaggedUndirectedEdge<int, int>(Array1[i, 0], Array1[i, 1], Array1[i, 2]));
             }
-            IEnumerable<TaggedUndirectedEdge<int, int>> Mst = Graph.MinimumSpanningTreePrim((TaggedUndirectedEdge<int, int> edge) => Convert.ToDouble(edge.Tag));
+            IEnumerable<TaggedUndirectedEdge<int, int>> Mst = Graph.MinimumSpanningTreeKruskal((TaggedUndirectedEdge<int, int> edge) => Convert.ToDouble(edge.Tag));
             List<TaggedUndirectedEdge<int, int>> List = Mst.ToList();
             bool test = true;
             for (int i = 0; i < Result1.Length / 2; i++)
@@ -73,7 +73,7 @@ namespace Acomp5
             {
                 Graph.AddVerticesAndEdge(new TaggedUndirectedEdge<int, int>(Array2[i, 0], Array2[i, 1], Array2[i, 2]));
             }
-            IEnumerable<TaggedUndirectedEdge<int, int>> Mst = Graph.MinimumSpanningTreePrim((TaggedUndirectedEdge<int, int> edge) => Convert.ToDouble(edge.Tag));
+            IEnumerable<TaggedUndirectedEdge<int, int>> Mst = Graph.MinimumSpanningTreeKruskal(TaggedUndirectedEdge<int, int> edge) => Convert.ToDouble(edge.Tag));
             List<TaggedUndirectedEdge<int, int>> List = Mst.ToList();
             bool test = true;
             for (int i = 0; i < Result2.Length / 2; i++)
@@ -91,7 +91,7 @@ namespace Acomp5
             {
                 Graph.AddVerticesAndEdge(new TaggedUndirectedEdge<int, int>(Array3[i, 0], Array3[i, 1], Array3[i, 2]));
             }
-            IEnumerable<TaggedUndirectedEdge<int, int>> Mst = Graph.MinimumSpanningTreePrim((TaggedUndirectedEdge<int, int> edge) => Convert.ToDouble(edge.Tag));
+            IEnumerable<TaggedUndirectedEdge<int, int>> Mst = Graph.MinimumSpanningTreeKruskal((TaggedUndirectedEdge<int, int> edge) => Convert.ToDouble(edge.Tag));
             List<TaggedUndirectedEdge<int, int>> List = Mst.ToList();
             bool test = true;
             for (int i = 0; i < Result3.Length / 2; i++)
